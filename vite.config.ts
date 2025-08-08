@@ -14,12 +14,17 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false, // Deshabilita los sourcemaps para producción
+    target: 'esnext',
+    minify: 'esbuild',
     rollupOptions: {
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
+          router: ['react-router-dom'],
+          ui: ['@radix-ui/react-accordion', '@radix-ui/react-alert-dialog', '@radix-ui/react-avatar'],
         },
       },
+      external: [],
     },
   },
 
